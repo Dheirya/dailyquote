@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Daily Aesthetic Motivation Quotes - Dheirya Tyagi</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,800,800i" rel="stylesheet" />
+        <style>
+            body {
+                background-color: #ccc;
+            }
+            .blockquote-wrapper {
+                display: flex;
+                height: 100vh;
+                padding: 0 20px;
+            }
+            .blockquote {
+                position: relative;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 800;
+                color: #ffffff;
+                padding: 30px 0;
+                width: 100%;
+                max-width: 75vw;
+                z-index: 1;
+                margin: 80px auto;
+                align-self: center;
+                border-top: solid 1px;
+                border-bottom: solid 1px;
+                padding: 50px;
+                border-radius: 10px;
+                background: rgba(255, 255, 255, 0.65);
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            .blockquote h1 {
+                position: relative;
+                color: rgba(35, 35, 35, 1);
+                font-size: 40px;
+                font-weight: 800;
+                line-height: 1;
+                margin: 0;
+            }
+            .blockquote:after {
+                position: absolute;
+                content: "”";
+                color: rgba(50, 50, 50, 1);
+                font-size: 10rem;
+                line-height: 0;
+                bottom: -33px;
+                right: 30px;
+            }
+            @media all and (min-width: 600px) {
+                .blockquote h1 {
+                    font-size: 60px;
+                }
+            }
+            .blockquote h4 {
+                position: relative;
+                color: #292a2b;
+                font-size: 1.4rem;
+                font-weight: normal;
+                line-height: 1;
+                margin: 0;
+                padding-top: 20px;
+                z-index: 1;
+            }
+            .blockquote p {
+                color: rgba(35, 35, 35, 0.75);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="blockquote-wrapper">
+            <div class="blockquote">
+                <p><i>Daily Aesthetic Motivational Quotes - <a style="color: rgba(35, 35, 35, 0.75)" href="#" onclick="location.reload()">Reload</a> for Another Quote</i></p>
+                <h1 id="quote">Quote</h1>
+                <h4>
+                    <i>&mdash; <span id="author">Author</span></i>
+                </h4>
+            </div>
+        </div>
+        <script>
+            var getJSON = function (url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", url, true);
+                xhr.responseType = "json";
+                xhr.onload = function () {
+                    var status = xhr.status;
+                    if (status === 200) {
+                        callback(null, xhr.response);
+                    } else {
+                        callback(status, xhr.response);
+                    }
+                };
+                xhr.send();
+            };
+            url = "https://api.quotable.io/random";
+            if(window.screen.width < 577){
+               url = "https://api.quotable.io/random?maxLength=128";
+            }
+            getJSON(url, function (err, data) {
+                if (err !== null) {
+                    alert("Something went wrong: " + err);
+                } else {
+                    document.getElementById("quote").innerHTML = data.content;
+                    document.getElementById("author").innerHTML = data.author;
+                    title = data.content;
+                    desc = "Quote: " + data.content + " ~ " + data.author;
+                }
+            });
+            document.body.style.backgroundImage = 'url("https://picsum.photos/' + window.screen.width + "/" + window.screen.height + '")';
+        </script>
+    </body>
+</html>
